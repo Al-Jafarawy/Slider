@@ -266,8 +266,8 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,6 +346,7 @@ body {
   border-radius: 25px;
   padding: 0.75rem 1.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  overflow: auto;
 }
 
 .progress-dots {
@@ -439,20 +440,23 @@ body {
 
   .progress-indicator {
     bottom: 18%;
-    padding: 0.5rem 1rem;
+    padding: 10px 0; /* خفف البادينج */
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   }
 
   .progress-dots {
-    gap: 0.5rem;
+    display: inline-flex;
+    gap: 10px;
+    white-space: nowrap; /* تمنع الكسر لسطور متعددة */
   }
 
   .progress-dot {
-    width: 10px;
-    height: 10px;
+    flex: 0 0 auto; /* تمنع dot من التمدد */
   }
 
-
-.prev-arrow {
+  .prev-arrow {
     backdrop-filter: none !important;
     background: none !important;
     border: none !important;
@@ -471,7 +475,6 @@ body {
     width: 28px;
     height: 28px;
   }
-
 }
 
 @media (max-width: 480px) {
@@ -574,7 +577,6 @@ body {
 }
 
 /* Focus styles for keyboard navigation */
-.nav-arrow:focus,
 .progress-dot:focus {
   outline: 3px solid rgba(255, 255, 255, 0.8);
   outline-offset: 3px;
@@ -644,3 +646,109 @@ body {
   background: rgba(0, 0, 0, 0.4);
 }
 
+/* header */
+/* Header styling */
+.site-header {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.267);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.site-header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.main-nav ul li a:hover {
+  color: #ff6347; /* Highlight on hover */
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  .main-nav ul {
+    display: none; /* Hide menu by default */
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.322);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-nav ul.active {
+    display: flex;
+  }
+
+  /* Hamburger button */
+  .hamburger {
+    display: block;
+    width: 28px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #222;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger span:nth-child(1) {
+    top: 0;
+  }
+  .hamburger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .hamburger span:nth-child(3) {
+    bottom: 0;
+  }
+}
+
+/* Optional: change hamburger to X when active */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 50%;
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 50%;
+}
