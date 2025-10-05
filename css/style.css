@@ -411,7 +411,6 @@ body {
   }
 
   .quote-card {
-    padding: 2rem 1.5rem;
     margin-bottom: 2rem;
     border-radius: 16px;
   }
@@ -440,20 +439,20 @@ body {
 
   .progress-indicator {
     bottom: 18%;
-    padding: 10px 0; /* خفف البادينج */
+    padding: 10px 0; 
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch; 
   }
 
   .progress-dots {
     display: inline-flex;
     gap: 10px;
-    white-space: nowrap; /* تمنع الكسر لسطور متعددة */
+    white-space: nowrap;
   }
 
   .progress-dot {
-    flex: 0 0 auto; /* تمنع dot من التمدد */
+    flex: 0 0 auto;
   }
 
   .prev-arrow {
